@@ -6,7 +6,7 @@
 http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<email:smtp-config name="SMTP" doc:name="Email SMTP" doc:id="0a5d6857-0e27-487d-8cfe-b11a566cf5c2" >
-		<email:smtp-connection host="smtp.gmail.com" port="587" user="suryamohanbml@gmail.com" password="surya@1998"/>
+		<email:smtp-connection host="smtp.gmail.com" port="587" user="suryamohanbml@gmail.com" password="*********"/>
 	</email:smtp-config>
 	<sub-flow name="postNotificationsSubFlow" doc:id="31fb7036-4207-46ab-9b67-f18976c22416" >
 		<logger level="INFO" doc:name="Logger" doc:id="c0a8629e-ca87-45fc-853a-f25b48f0d182" />
