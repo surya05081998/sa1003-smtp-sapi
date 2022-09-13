@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:email="http://www.mulesoft.org/schema/mule/email"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<email:smtp-config name="SMTP" doc:name="Email SMTP" doc:id="0a5d6857-0e27-487d-8cfe-b11a566cf5c2" >
+		<email:smtp-connection host="smtp.gmail.com" port="587" user="suryamohanbml@gmail.com" password="surya@1998"/>
+	</email:smtp-config>
+	<sub-flow name="postNotificationsSubFlow" doc:id="31fb7036-4207-46ab-9b67-f18976c22416" >
+		<logger level="INFO" doc:name="Logger" doc:id="c0a8629e-ca87-45fc-853a-f25b48f0d182" />
+		<logger level="INFO" doc:name="Logger" doc:id="eac72161-2a80-493e-a991-1f2098d9f3b5" />
+		<email:send doc:name="Send Email Notification" doc:id="fc684607-8570-41b1-821b-8f4b4eefa795" config-ref="SMTP" fromAddress="suryamohanbml@gmail.com" subject='"Failed Records Email Notification"'>
+			<email:to-addresses >
+				<email:to-address value="menda.surya1998@gmail.com" />
+			</email:to-addresses>
+			<email:body contentType="text/plain" encoding="UTF-8" >
+				<email:content ><![CDATA[#["Hi Team, Please find the failed records from date 13-09-2022 to 14-09-2022"]]]></email:content>
+			</email:body>
+			<email:attachments ><![CDATA[#[{
+	"attachment": payload
+}]]]></email:attachments>
+		</email:send>
+	</sub-flow>
+</mule>

@@ -1,0 +1,29 @@
+#%RAML 1.0
+title: sa1003-smtp-sapi
+description: This is smtp system api to send mail notification of the failed records
+baseUri: /api/sys/v1
+
+types:
+  responseDataType: !include dataTypes/responseDataType.raml
+
+traits:
+  clientCredentials: !include traits/clientCredentials.raml
+
+/notification:
+  post:
+    is:
+      - clientCredentials
+    body:
+      application/text:
+        example: !include examples/request/requestBody.json
+    responses:
+      200:
+        body:
+          application/json:
+            type: responseDataType
+            example: !include examples/response/responseBody.json
+
+        
+        
+        
+            
